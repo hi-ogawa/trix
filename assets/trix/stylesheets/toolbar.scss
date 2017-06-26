@@ -83,6 +83,8 @@ trix-toolbar {
         &.italic::before { background-image: $icon-italic; }
         &.link::before { background-image: $icon-link; }
         &.strike::before { background-image: $icon-strike; }
+        &.color::before { background-image: $icon-color; top: 6%; bottom: 6%; }
+        &.background-color::before { background-image: $icon-background-color;  top: 6%; bottom: 6%; }
         &.quote::before { background-image: $icon-quote; }
         &.heading-1::before { background-image: $icon-heading-1; }
         &.code::before { background-image: $icon-code; }
@@ -186,6 +188,55 @@ trix-toolbar {
           .button_group {
             flex: 0 0 content;
             margin: 0;
+          }
+        }
+      }
+
+      &.color_dialog {
+        max-width: 250px;
+
+        .color_fields {
+          .color_label {
+            display: block;
+            cursor: pointer;
+            margin-bottom: 0.5em;
+
+            input[type=radio] {
+              position: absolute;
+              z-index: -1;
+              opacity: 0;
+
+              & ~ .color_swatch {
+                display: block;
+                vertical-align: middle;
+                text-align: center;
+                color: transparent;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                line-height: 1.5;
+                border-radius: 3px;
+              }
+
+              &[value=""] ~ .color_swatch {
+                background-color: rgba(0, 0 ,0, 0.03);
+
+                &::before {
+                  display: inline-block;
+                  content: "";
+                  width: 1em;
+                  height: 1em;
+                  vertical-align: middle;
+                  background-image: $icon-remove;
+                  background-repeat: no-repeat;
+                  background-size: 96%;
+                  opacity: 0.4;
+                }
+              }
+
+              &:checked ~ .color_swatch {
+                border-color: highlight;
+                box-shadow: highlight 0px 0px 1.5px 1px;
+              }
+            }
           }
         }
       }

@@ -7,7 +7,7 @@ class Trix.ToolbarController extends Trix.BasicObject
   dialogSelector = ".dialog[data-trix-dialog]"
   activeDialogSelector = "#{dialogSelector}.active"
   dialogButtonSelector = "#{dialogSelector} input[data-trix-method]"
-  dialogInputSelector = "#{dialogSelector} input[type=text], #{dialogSelector} input[type=url]"
+  dialogInputSelector = "#{dialogSelector} input[type=text], #{dialogSelector} input[type=url], #{dialogSelector} input[type=radio]"
 
   constructor: (@element) ->
     @attributes = {}
@@ -122,9 +122,8 @@ class Trix.ToolbarController extends Trix.BasicObject
       disabledInput.removeAttribute("disabled")
 
     if attributeName = getAttributeName(element)
-      if input = getInputForDialog(element, dialogName)
-        input.value = @attributes[attributeName] ? ""
-        input.select()
+      attributeValue = @attributes[attributeName] ? ""
+      setInputValueForDialog(element, attributeName, attributeValue)
 
     @delegate?.toolbarDidShowDialog(dialogName)
 
@@ -157,9 +156,25 @@ class Trix.ToolbarController extends Trix.BasicObject
   getDialog: (dialogName) ->
     @element.querySelector(".dialog[data-trix-dialog=#{dialogName}]")
 
-  getInputForDialog = (element, attributeName) ->
+  getInputsForDialog = (element, attributeName) ->
     attributeName ?= getAttributeName(element)
-    element.querySelector("input[name='#{attributeName}']")
+    [element.querySelectorAll("input[name='#{attributeName}']")...]
+
+  getInputForDialog = (element, attributeName) ->
+    inputs = getInputsForDialog(element, attributeName)
+    if inputs.length is 1
+      return inputs[0]
+    else
+      return input for input in inputs when input.checked
+
+  setInputValueForDialog = (element, attributeName, attributeValue) ->
+    inputs = getInputsForDialog(element, attributeName)
+    if inputs.length is 1
+      inputs[0].value = attributeValue
+      inputs[0].select()
+    else
+      input.checked = true for input in inputs when input.value is attributeValue
+    attributeValue
 
   # General helpers
 

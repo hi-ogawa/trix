@@ -1,4 +1,5 @@
 Trix.config.lang =
+  backgroundColor: "Background Color"
   bold: "Bold"
   bullets: "Bullets"
   byte:  "Byte"
@@ -6,10 +7,12 @@ Trix.config.lang =
   captionPlaceholder: "Type a caption here…"
   captionPrompt: "Add a caption…"
   code: "Code"
+  color: "Color"
   heading1: "Heading"
   indent: "Increase Level"
   italic: "Italic"
   link: "Link"
+  none: "None"
   numbers: "Numbers"
   outdent: "Decrease Level"
   quote: "Quote"

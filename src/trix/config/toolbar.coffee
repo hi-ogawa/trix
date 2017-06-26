@@ -1,6 +1,28 @@
 {makeFragment} = Trix
 {lang} = Trix.config
 
+createColorDialogHTML = (attributeName) ->
+  {options} = Trix.config.textAttributes[attributeName]
+  optionHTML = for value in options
+    """
+    <label class="color_label">
+      <input type="radio" name="#{attributeName}" value="#{value}" data-trix-method="setAttribute">
+      <span class="color_swatch" style="background-color: #{value}">#{value}</span>
+    </label>
+    """
+
+  """
+  <div class="dialog color_dialog" data-trix-attribute="#{attributeName}" data-trix-dialog="#{attributeName}">
+    <div class="color_fields">
+      #{optionHTML.join("\n")}
+      <label class="color_label">
+        <input type="radio" name="#{attributeName}" value="" data-trix-method="removeAttribute">
+        <span class="color_swatch"></span>
+      </label>
+    </div>
+  </div>
+  """
+
 Trix.config.toolbar =
   content: makeFragment """
     <div class="button_row">
@@ -9,6 +31,8 @@ Trix.config.toolbar =
         <button type="button" class="icon italic" data-trix-attribute="italic" data-trix-key="i" title="#{lang.italic}" tabindex="-1">#{lang.italic}</button>
         <button type="button" class="icon strike" data-trix-attribute="strike" title="#{lang.strike}" tabindex="-1">#{lang.strike}</button>
         <button type="button" class="icon link" data-trix-attribute="href" data-trix-action="link" data-trix-key="k" title="#{lang.link}" tabindex="-1">#{lang.link}</button>
+        <button type="button" class="icon color" data-trix-attribute="color" title="#{lang.color}" tabindex="-1">#{lang.color}</button>
+        <button type="button" class="icon background-color" data-trix-attribute="backgroundColor" title="#{lang.backgroundColor}" tabindex="-1">#{lang.backgroundColor}</button>
       </span>
 
       <span class="button_group block_tools">
@@ -37,5 +61,7 @@ Trix.config.toolbar =
           </div>
         </div>
       </div>
+      #{createColorDialogHTML("color")}
+      #{createColorDialogHTML("backgroundColor")}
     </div>
   """
