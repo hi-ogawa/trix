@@ -1,5 +1,4 @@
 Trix.config.lang =
-  backgroundColor: "Background Color"
   bold: "Bold"
   bullets: "Bullets"
   byte:  "Byte"
@@ -9,6 +8,7 @@ Trix.config.lang =
   code: "Code"
   color: "Color"
   heading1: "Heading"
+  highlight: "Highlight"
   indent: "Increase Level"
   italic: "Italic"
   link: "Link"

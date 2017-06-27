@@ -23,10 +23,12 @@ Trix.config.textAttributes =
     inheritable: true
   color:
     colors: new Trix.ColorSet "#ff2d55","#e55235", "#ec7a3c", "#5856d6", "#009688", "#3cb371"
+    styleProperty: "color"
     parser: (element) ->
       @colors.get(element.style.color)
-  backgroundColor:
+  highlight:
     colors: new Trix.ColorSet "#faf785", "#e8fff5", "#ecf9fd", "#fdf3e6", "#ffe5e5", "#f2f2f2"
+    styleProperty: "backgroundColor"
     parser: (element) ->
       @colors.get(element.style.backgroundColor)
   frozen:

@@ -33,7 +33,7 @@ Trix.config.toolbar =
         <button type="button" class="icon strike" data-trix-attribute="strike" title="#{lang.strike}" tabindex="-1">#{lang.strike}</button>
         <button type="button" class="icon link" data-trix-attribute="href" data-trix-action="link" data-trix-key="k" title="#{lang.link}" tabindex="-1">#{lang.link}</button>
         <button type="button" class="icon color" data-trix-attribute="color" title="#{lang.color}" tabindex="-1">#{lang.color}</button>
-        <button type="button" class="icon background-color" data-trix-attribute="backgroundColor" title="#{lang.backgroundColor}" tabindex="-1">#{lang.backgroundColor}</button>
+        <button type="button" class="icon highlight" data-trix-attribute="highlight" title="#{lang.highlight}" tabindex="-1">#{lang.highlight}</button>
       </span>
 
       <span class="button_group block_tools">
@@ -63,6 +63,6 @@ Trix.config.toolbar =
         </div>
       </div>
       #{createColorDialogHTML("color")}
-      #{createColorDialogHTML("backgroundColor")}
+      #{createColorDialogHTML("highlight")}
     </div>
   """

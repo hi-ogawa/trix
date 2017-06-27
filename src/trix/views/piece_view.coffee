@@ -67,8 +67,8 @@ class Trix.PieceView extends Trix.ObjectView
       if config.style
         styles[key] = value for key, value of config.style
 
-      if key in ["color", "backgroundColor"]
-        styles[key] = value
+      if config.styleProperty
+        styles[config.styleProperty] = value
 
     if Object.keys(styles).length
       element ?= makeElement("span")

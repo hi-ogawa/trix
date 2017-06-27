@@ -84,7 +84,7 @@ trix-toolbar {
         &.link::before { background-image: $icon-link; }
         &.strike::before { background-image: $icon-strike; }
         &.color::before { background-image: $icon-color; top: 6%; bottom: 6%; }
-        &.background-color::before { background-image: $icon-background-color;  top: 6%; bottom: 6%; }
+        &.highlight::before { background-image: $icon-background-color;  top: 6%; bottom: 6%; }
         &.quote::before { background-image: $icon-quote; }
         &.heading-1::before { background-image: $icon-heading-1; }
         &.code::before { background-image: $icon-code; }
