@@ -246,7 +246,7 @@ trix-toolbar {
 
               &:checked ~ .color_swatch {
                 border-color: rgba(255, 255, 255, 0.2);
-                box-shadow: highlight 0px 0px 1.5px 1.5px;
+                box-shadow: 0 0 2px 1px rgba(179, 215, 255, 1);
               }
             }
           }
