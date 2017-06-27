@@ -193,18 +193,24 @@ trix-toolbar {
       }
 
       &.color_dialog {
-        padding: 10px 8px;
         max-width: 280px;
+        padding: 0 0 0.5em 0.5em;
 
         .color_fields {
-          display: flex;
-          justify-content: space-between;
+          white-space: normal;
 
           .color_label {
-            flex: 1 0 auto;
-            height: 2em;
-            max-width: 2.5em;
+            display: inline-block;
             cursor: pointer;
+            float: left;
+            height: 2em;
+            width: 100%;
+            max-width: 2.75em;
+            margin: 0.5em 0.5em 0 0;
+
+            &:last-child {
+              margin-right: 0;
+            }
 
             input[type=radio] {
               position: absolute;
