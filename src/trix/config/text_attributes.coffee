@@ -22,16 +22,12 @@ Trix.config.textAttributes =
     tagName: "del"
     inheritable: true
   color:
-    options: ["orangered", "mediumslateblue", "mediumseagreen"]
+    options: new Trix.ColorSet "orangered", "mediumslateblue", "mediumseagreen"
     parser: (element) ->
-      if color = element.style.color?.toLowerCase()
-        if color in @options
-          color
+      @options.get(element.style.color)
   backgroundColor:
-    options: ["yellow", "pink", "aqua"]
+    options: new Trix.ColorSet "yellow", "pink", "aqua"
     parser: (element) ->
-      if color = element.style.backgroundColor?.toLowerCase()
-        if color in @options
-          color
+      @options.get(element.style.backgroundColor)
   frozen:
     style: { "backgroundColor": "highlight" }

@@ -2,3 +2,4 @@
 #= require trix/core/collections/object_group
 #= require trix/core/collections/object_map
 #= require trix/core/collections/element_store
+#= require trix/core/collections/color_set
