@@ -193,13 +193,18 @@ trix-toolbar {
       }
 
       &.color_dialog {
-        max-width: 250px;
+        padding: 10px 8px;
+        max-width: 280px;
 
         .color_fields {
+          display: flex;
+          justify-content: space-between;
+
           .color_label {
-            display: block;
+            flex: 1 0 auto;
+            height: 2em;
+            max-width: 2.5em;
             cursor: pointer;
-            margin-bottom: 0.5em;
 
             input[type=radio] {
               position: absolute;
@@ -207,34 +212,36 @@ trix-toolbar {
               opacity: 0;
 
               & ~ .color_swatch {
-                display: block;
-                vertical-align: middle;
-                text-align: center;
-                color: transparent;
-                border: 1px solid rgba(0, 0, 0, 0.2);
-                line-height: 1.5;
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                border: 1px solid rgba(0, 0, 0, 0.1);
                 border-radius: 3px;
               }
 
               &[value=""] ~ .color_swatch {
-                background-color: rgba(0, 0 ,0, 0.03);
+                position: relative;
+                overflow: hidden;
 
                 &::before {
                   display: inline-block;
+                  position: absolute;
+                  top: -10%;
+                  right: -10%;
+                  bottom: -10%;
+                  left: -10%;
                   content: "";
-                  width: 1em;
-                  height: 1em;
-                  vertical-align: middle;
                   background-image: $icon-remove;
                   background-repeat: no-repeat;
-                  background-size: 96%;
-                  opacity: 0.4;
+                  background-position: center;
+                  background-size: 170%;
+                  opacity: 0.03;
                 }
               }
 
               &:checked ~ .color_swatch {
-                border-color: highlight;
-                box-shadow: highlight 0px 0px 1.5px 1px;
+                border-color: rgba(255, 255, 255, 0.2);
+                box-shadow: highlight 0px 0px 1.5px 1.5px;
               }
             }
           }

@@ -8,7 +8,7 @@ createColorDialogHTML = (attributeName) ->
     fields.push """
       <label class="color_label">
         <input type="radio" name="#{attributeName}" value="#{value}" data-trix-method="setAttribute">
-        <span class="color_swatch" style="background-color: #{value}">#{value}</span>
+        <span class="color_swatch" style="background-color: #{value}"></span>
       </label>
     """
 
