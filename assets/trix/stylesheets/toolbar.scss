@@ -221,21 +221,20 @@ trix-toolbar {
 
               &[value=""] ~ .color_swatch {
                 position: relative;
-                overflow: hidden;
 
                 &::before {
                   display: inline-block;
                   position: absolute;
-                  top: -10%;
-                  right: -10%;
-                  bottom: -10%;
-                  left: -10%;
+                  top: 5%;
+                  right: 5%;
+                  bottom: 5%;
+                  left: 5%;
                   content: "";
-                  background-image: $icon-remove;
+                  background-image: $icon-reset-color;
                   background-repeat: no-repeat;
                   background-position: center;
-                  background-size: 170%;
-                  opacity: 0.03;
+                  background-size: contain;
+                  opacity: 0.4;
                 }
               }
 
