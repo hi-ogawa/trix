@@ -2,13 +2,13 @@
 {lang} = Trix.config
 
 createColorDialogHTML = (attributeName) ->
-  {options} = Trix.config.textAttributes[attributeName]
+  {colors} = Trix.config.textAttributes[attributeName]
   fields = []
-  options.forEach (value) ->
+  colors.forEach (color) ->
     fields.push """
       <label class="color_label">
-        <input type="radio" name="#{attributeName}" value="#{value}" data-trix-method="setAttribute">
-        <span class="color_swatch" style="background-color: #{value}"></span>
+        <input type="radio" name="#{attributeName}" value="#{color}" data-trix-method="setAttribute">
+        <span class="color_swatch" style="background-color: #{color}"></span>
       </label>
     """
 
