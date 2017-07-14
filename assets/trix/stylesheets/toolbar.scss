@@ -53,7 +53,8 @@ trix-toolbar {
         width: 2.6em;
         height: 1.6em;
         max-width: calc(0.8em + 4vw);
-        text-indent: -9999px;
+        // text-indent: -9999px;
+        color: rgba(0,0,0,0);
 
         @include phone {
           height: 2em;

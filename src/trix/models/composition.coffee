@@ -204,10 +204,13 @@ class Trix.Composition extends Trix.BasicObject
       @removeCurrentAttribute(attributeName)
 
   canSetCurrentAttribute: (attributeName) ->
-    if getBlockConfig(attributeName)
-      @canSetCurrentBlockAttribute(attributeName)
+    if @editingAttachment and attributeName is "href"
+      true
     else
-      @canSetCurrentTextAttribute(attributeName)
+      if getBlockConfig(attributeName)
+        @canSetCurrentBlockAttribute(attributeName)
+      else
+        @canSetCurrentTextAttribute(attributeName)
 
   canSetCurrentTextAttribute: (attributeName) ->
     switch attributeName
@@ -221,12 +224,15 @@ class Trix.Composition extends Trix.BasicObject
     not block.isTerminalBlock()
 
   setCurrentAttribute: (attributeName, value) ->
-    if getBlockConfig(attributeName)
-      @setBlockAttribute(attributeName, value)
+    if @editingAttachment and attributeName is "href"
+      @editingAttachment.setAttributes({ href: value })
     else
-      @setTextAttribute(attributeName, value)
-      @currentAttributes[attributeName] = value
-      @notifyDelegateOfCurrentAttributesChange()
+      if getBlockConfig(attributeName)
+        @setBlockAttribute(attributeName, value)
+      else
+        @setTextAttribute(attributeName, value)
+        @currentAttributes[attributeName] = value
+        @notifyDelegateOfCurrentAttributesChange()
 
   setTextAttribute: (attributeName, value) ->
     return unless selectedRange = @getSelectedRange()
@@ -246,13 +252,16 @@ class Trix.Composition extends Trix.BasicObject
       @setSelection(selectedRange)
 
   removeCurrentAttribute: (attributeName) ->
-    if getBlockConfig(attributeName)
-      @removeBlockAttribute(attributeName)
-      @updateCurrentAttributes()
+    if @editingAttachment and attributeName is "href"
+      @editingAttachment.setAttributes({ href: @editingAttachment.getAttribute("url") })
     else
-      @removeTextAttribute(attributeName)
-      delete @currentAttributes[attributeName]
-      @notifyDelegateOfCurrentAttributesChange()
+      if getBlockConfig(attributeName)
+        @removeBlockAttribute(attributeName)
+        @updateCurrentAttributes()
+      else
+        @removeTextAttribute(attributeName)
+        delete @currentAttributes[attributeName]
+        @notifyDelegateOfCurrentAttributesChange()
 
   removeTextAttribute: (attributeName) ->
     return unless selectedRange = @getSelectedRange()

@@ -16,6 +16,15 @@
     <script type="text/javascript">
       document.addEventListener("trix-initialize", function(event) {
         Trix.Inspector.install(event.target);
+
+        var trixEditor = document.getElementById("trix-editor");
+        var input = document.getElementById("file-input");
+
+        input.addEventListener("change", () => {
+          Array.from(input.files).forEach((file) => {
+            trixEditor.editor.insertFile(file);
+          });
+        });
       });
 
       document.addEventListener("trix-attachment-add", function(event) {
@@ -49,7 +58,8 @@
   </head>
   <body>
     <main>
-      <trix-editor autofocus class="trix-content"></trix-editor>
+      <trix-editor id="trix-editor" autofocus class="trix-content"></trix-editor>
+      <input type="file" id="file-input" />
     </main>
   </body>
 </html>
